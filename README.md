@@ -1,43 +1,63 @@
 # Breezy
 
-A fictional aircon cleaning, repair, and installation website for a freelance web development portfolio.
+Breezy is a portfolio website for a fictional local air-conditioning service business. It offers aircon cleaning, repair, installation, and preventive maintenance for homes and small businesses.
 
-## Current milestone
+## Project goal
 
-Astro starter configured with strict TypeScript and Tailwind CSS. The homepage displays the Breezy name and service tagline. Full service pages, a quote estimator, and inquiry handling are planned, not implemented yet.
+The aim was to create a straightforward and reliable service website that helps potential customers understand their options and request a quote.
 
-## Stack
+The project is based on a realistic local-business scenario, with clear service descriptions, simple calls to action, responsive layouts, and a quote-request flow.
 
-- Astro for static pages
-- TypeScript 6 (compatible with the installed Astro checker)
-- Tailwind CSS 4 through its Vite plugin
-- Git and GitHub for version control
-- Planned hosting: Cloudflare Pages, using its free tier
+## Features
 
-## Local development
+- Homepage with a service overview, process section, trust section, FAQs, and quote call to action
+- Dedicated Services page with detailed explanations for each service
+- Dedicated Quote page with required-field validation and a success state
+- Responsive desktop and mobile navigation
+- Mobile-friendly service card layouts
+- Custom service illustrations in an Irasutoya-inspired visual style
+- SEO metadata, social-sharing tags, theme color, and custom favicon
+- Smooth-scroll navigation for homepage sections
+- Accessible labels, focus states, semantic headings, and skip-to-content links
 
-Use a supported Node.js release meeting the package.json engine requirement and npm.
+## Design approach
 
-```sh
-npm ci
-npm run dev -- --background
-npx astro dev status
-npx astro dev logs
+Breezy uses different shades of blue to convey cleanliness, comfort, and reliability.
+
+The layout keeps important information easy to scan:
+
+- Strong headings explain the main benefit quickly
+- Service cards help customers compare options
+- Illustrations make the content friendlier and more memorable
+- Clear quote buttons appear throughout the site
+- The mobile layout prioritizes readable text and simple navigation
+
+## Tech stack
+
+- [Astro](https://astro.build/)
+- TypeScript
+- Tailwind CSS
+- Git and GitHub
+
+## Running the project locally
+
+```bash
+npm install
+npm run dev
 ```
 
-Open the URL reported by Astro. Stop the background server with `npx astro dev stop`.
+To check the project for errors:
 
-## Verification
-
-```sh
+```bash
 npm run check
+```
+
+To create a production build:
+
+```bash
 npm run build
 ```
 
-The static production output is generated in `dist/`.
+## Portfolio note
 
-## Workflow
-
-Work in small milestones. Review changes and run checks before committing. The project owner runs all Git pushes manually. Do not commit credentials, environment files, generated output, or dependencies.
-
-This project represents a fictional business; it does not accept real service requests. Hosting and a public GitHub repository have not been configured as part of this milestone.
+Breezy is a fictional business created for portfolio purposes. Its contact information and quote requests are for demonstration only.

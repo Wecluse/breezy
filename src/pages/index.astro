@@ -31,10 +31,20 @@ const faqs = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Breezy is a fictional aircon cleaning, repair, installation, and maintenance service website." />
+    <meta name="theme-color" content="#082f49" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Breezy" />
+    <meta property="og:title" content="Breezy | Aircon Cleaning, Repair & Installation" />
+    <meta property="og:description" content="Friendly aircon cleaning, repair, installation, and maintenance for homes and small businesses." />
+    <meta property="og:image" content="/images/breezy-technician.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Breezy | Aircon Cleaning, Repair & Installation" />
+    <meta name="twitter:description" content="Friendly aircon cleaning, repair, installation, and maintenance for homes and small businesses." />
+    <meta name="twitter:image" content="/images/breezy-technician.png" />
     <title>Breezy | Aircon Cleaning, Repair & Installation</title>
   </head>
   <body class="bg-[#f7fbff] font-sans text-slate-900 antialiased">
@@ -133,9 +143,26 @@ const faqs = [
 
       <section id="quote" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28"><div class="overflow-hidden rounded-3xl bg-teal-500 px-6 py-12 text-sky-950 sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-12"><div class="max-w-2xl"><p class="text-sm font-black uppercase tracking-[0.18em] text-teal-950/70">Get started</p><h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Ready for a fresher, cooler space?</h2><p class="mt-4 text-lg leading-8 text-teal-950/80">Tell us what your unit needs and we’ll prepare a clear service estimate.</p></div><a href="/quote/" class="mt-7 inline-flex rounded-md bg-sky-950 px-5 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-sky-900 focus:outline-2 focus:outline-offset-2 focus:outline-sky-950 lg:mt-0">Request a quote</a></div><p class="mt-4 text-center text-sm text-slate-500">Concept portfolio project. Sample contact details only.</p></section>
 
-      <section id="faq" class="border-t border-sky-100 bg-white"><div class="mx-auto max-w-3xl px-5 py-20 sm:px-8"><p class="text-sm font-black uppercase tracking-[0.18em] text-sky-600">Frequently asked questions</p><h2 class="mt-3 text-3xl font-black tracking-tight text-sky-950 sm:text-4xl">A few helpful answers.</h2><div class="mt-8 divide-y divide-sky-100 border-y border-sky-100">{faqs.map(([question, answer]) => (<details class="group py-5"><summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-sky-950 marker:hidden">{question}<span class="text-2xl font-normal text-sky-500 transition group-open:rotate-45" aria-hidden="true">+</span></summary><p class="max-w-2xl pt-3 leading-7 text-slate-600">{answer}</p></details>))}</div></div></section>
+      <section id="faq" class="border-t border-sky-100 bg-white"><div class="mx-auto max-w-3xl px-5 py-20 sm:px-8"><p class="text-sm font-black uppercase tracking-[0.18em] text-sky-600">Frequently asked questions</p><h2 class="mt-3 text-3xl font-black tracking-tight text-sky-950 sm:text-4xl">A few helpful answers.</h2><div class="mt-8 divide-y divide-sky-100 border-y border-sky-100">{faqs.map(([question, answer], index) => (<article class="py-5"><button class="faq-toggle flex w-full cursor-pointer items-center justify-between gap-6 text-left text-lg font-bold text-sky-950" type="button" aria-expanded="false" aria-controls={`faq-answer-${index}`}>{question}<span class="faq-icon text-2xl font-normal text-sky-500 transition duration-200" aria-hidden="true">+</span></button><div id={`faq-answer-${index}`} class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out"><div class="min-h-0 overflow-hidden"><p class="max-w-2xl pt-3 leading-7 text-slate-600 opacity-0 transition-opacity duration-200">{answer}</p></div></div></article>))}</div></div></section>
     </main>
 
     <footer class="bg-sky-950 text-sky-100"><div class="mx-auto flex max-w-7xl flex-col gap-7 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between"><div><p class="text-2xl font-black tracking-tight text-white">Breezy</p><p class="mt-2 text-sm text-sky-200">Aircon cleaning, repair &amp; installation.</p></div><div class="text-sm leading-7 text-sky-200 md:text-right"><p>Serving homes and small businesses.</p><p>© {new Date().getFullYear()} Breezy. Concept portfolio project.</p></div></div></footer>
+    <script>
+      document.querySelectorAll<HTMLButtonElement>(".faq-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+          const answer = document.getElementById(button.getAttribute("aria-controls") ?? "");
+          const icon = button.querySelector<HTMLElement>(".faq-icon");
+          const text = answer?.querySelector<HTMLElement>("p");
+
+          button.setAttribute("aria-expanded", String(!isOpen));
+          answer?.classList.toggle("grid-rows-[0fr]", isOpen);
+          answer?.classList.toggle("grid-rows-[1fr]", !isOpen);
+          text?.classList.toggle("opacity-0", isOpen);
+          text?.classList.toggle("opacity-100", !isOpen);
+          icon?.classList.toggle("rotate-45", !isOpen);
+        });
+      });
+    </script>
   </body>
 </html>
