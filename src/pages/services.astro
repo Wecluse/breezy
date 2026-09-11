@@ -104,10 +104,11 @@ const services = [
             <article class="grid gap-7 rounded-xl border border-sky-100 bg-white p-6 shadow-sm sm:p-9 lg:grid-cols-[.16fr_.84fr] lg:gap-8">
               <div class="flex flex-col gap-6 lg:gap-8">
                 <p class="self-start text-sm font-black tracking-[0.18em] text-sky-500">{service.number}</p>
-                <img src={service.image} alt="" aria-hidden="true" loading="lazy" class="h-28 w-32 self-center object-contain object-left lg:mt-12 lg:h-48 lg:w-full lg:self-start" />
+                <img src={service.image} alt="" aria-hidden="true" loading="lazy" class="hidden object-contain object-left lg:mt-12 lg:block lg:h-48 lg:w-full lg:self-start" />
               </div>
               <div>
-                <div>
+                <div class="flex items-center gap-4 lg:block">
+                  <div class="min-w-0">
                   <p class="text-sm font-bold text-teal-700">{service.eyebrow}</p>
                   <div class="mt-2 flex items-center gap-3">
                     <h3 class="text-2xl font-black tracking-tight text-sky-950 sm:text-3xl">{service.title}</h3>
@@ -118,8 +119,10 @@ const services = [
                     {service.icon === "calendar" && <svg viewBox="0 0 24 24" class="size-6 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4m8-4v4M3 10h18m-11 5 2 2 4-4"/></svg>}
                     </span>
                   </div>
+                  <p class="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">{service.description}</p>
                 </div>
-                <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{service.description}</p>
+                  <img src={service.image} alt="" aria-hidden="true" loading="lazy" class="size-28 shrink-0 object-contain lg:hidden" />
+                </div>
                 <div class="mt-4 grid gap-7 border-t border-sky-100 pt-7 md:grid-cols-2">
                   <div><h4 class="text-sm font-black uppercase tracking-[0.14em] text-sky-800">What’s included</h4><ul class="mt-4 space-y-3 text-slate-600">{service.includes.map((item) => (<li class="flex gap-3 leading-6"><span class="mt-1 grid size-5 shrink-0 place-items-center rounded-full bg-teal-100 text-xs font-black text-teal-700" aria-hidden="true">✓</span>{item}</li>))}</ul></div>
                   <div class="rounded-2xl bg-sky-50 p-5"><h4 class="text-sm font-black uppercase tracking-[0.14em] text-sky-800">This may be right for you if…</h4><p class="mt-4 leading-7 text-slate-600">{service.goodFor}</p></div>
