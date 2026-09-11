@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 
+const site = Astro.site ?? new URL("https://breezy.breezy-rmzsevilla.workers.dev");
+const canonicalUrl = new URL(Astro.url.pathname, site);
+const socialImageUrl = new URL("/images/services-hero.png", site);
+
 const services = [
   {
     number: "01",
@@ -52,16 +56,18 @@ const services = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Explore Breezy's fictional aircon cleaning, repair, installation, and preventive maintenance services." />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="theme-color" content="#082f49" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Breezy" />
     <meta property="og:title" content="Services | Breezy" />
     <meta property="og:description" content="Explore Breezy's aircon cleaning, repair, installation, and preventive maintenance services." />
-    <meta property="og:image" content="/images/services-hero.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Services | Breezy" />
     <meta name="twitter:description" content="Explore Breezy's aircon cleaning, repair, installation, and preventive maintenance services." />
-    <meta name="twitter:image" content="/images/services-hero.png" />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>Services | Breezy</title>
   </head>
   <body class="bg-[#f7fbff] font-sans text-slate-900 antialiased">

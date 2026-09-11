@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 
+const site = Astro.site ?? new URL("https://breezy.breezy-rmzsevilla.workers.dev");
+const canonicalUrl = new URL(Astro.url.pathname, site);
+const socialImageUrl = new URL("/images/breezy-technician.png", site);
+
 const services = [
   { title: "Aircon cleaning", description: "Deep cleaning that helps your unit blow fresher, cooler air.", icon: "sparkles" },
   { title: "Repair & diagnostics", description: "Clear answers and practical repairs for leaks, noise, and weak cooling.", icon: "tool" },
@@ -35,16 +39,18 @@ const faqs = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Breezy is a fictional aircon cleaning, repair, installation, and maintenance service website." />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="theme-color" content="#082f49" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Breezy" />
     <meta property="og:title" content="Breezy | Aircon Cleaning, Repair & Installation" />
     <meta property="og:description" content="Friendly aircon cleaning, repair, installation, and maintenance for homes and small businesses." />
-    <meta property="og:image" content="/images/breezy-technician.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Breezy | Aircon Cleaning, Repair & Installation" />
     <meta name="twitter:description" content="Friendly aircon cleaning, repair, installation, and maintenance for homes and small businesses." />
-    <meta name="twitter:image" content="/images/breezy-technician.png" />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>Breezy | Aircon Cleaning, Repair & Installation</title>
   </head>
   <body class="bg-[#f7fbff] font-sans text-slate-900 antialiased">

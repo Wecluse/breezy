@@ -2,6 +2,8 @@
 
 Breezy is a portfolio website for a fictional local air-conditioning service business. It offers aircon cleaning, repair, installation, and preventive maintenance for homes and small businesses.
 
+**Live site:** [breezy.breezy-rmzsevilla.workers.dev](https://breezy.breezy-rmzsevilla.workers.dev)
+
 ## Project goal
 
 The aim was to create a straightforward and reliable service website that helps potential customers understand their options and request a quote.
@@ -56,6 +58,13 @@ To create a production build:
 
 ```bash
 npm run build
+```
+
+To validate or publish the Cloudflare Workers deployment:
+
+```bash
+npm run deploy:dry-run
+npm run deploy
 ```
 
 ## Portfolio note
